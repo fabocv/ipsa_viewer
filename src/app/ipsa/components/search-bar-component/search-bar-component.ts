@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { Searcher } from "../../../ui/molecules/searcher/searcher";
 import { SearchService } from '../../services/search.service';
 
@@ -15,6 +15,14 @@ import { SearchService } from '../../services/search.service';
 })
 export class SearchBarComponent {
   query = signal<string>("");
+
+  buscar() {
+    const input = this.query().toUpperCase()
+    this.search.instrumento.set("")
+    if (this.search.codeInstruments.includes(input)) {
+      this.search.instrumento.set(input)
+    }
+  }
 
   constructor(public search: SearchService) {}
 }
