@@ -1,6 +1,7 @@
-<p-inputgroup>
-    <p-inputgroup-addon>
+<p-inputgroup class="mb-4 p-8">
+    <p-inputgroup-addon (onclick)="doSomething()" class="hover:bg-blue">
         <i class="pi pi-search"></i>
     </p-inputgroup-addon>
-    <input pInputText [value]="query()" placeholder="Busca un instrumento" />
+    <input pInputText (input)="query.set($event.target.value)"  placeholder="Busca un instrumento" />
 </p-inputgroup>
+

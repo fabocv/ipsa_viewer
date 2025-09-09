@@ -1,4 +1,6 @@
 @import "primeicons/primeicons.css";
+@import "tailwindcss";
+
 html { 
     font-size: 100%;
     /* background-color: #111111; */
