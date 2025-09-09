@@ -16,7 +16,6 @@ export class HeaderComponent {
     effect(() => {
       const resumen = this.search.resumen();
       this.resumen = resumen;
-      console.log(resumen)
     });
   }
 }

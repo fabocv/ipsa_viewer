@@ -1,3 +1,9 @@
-<p>summary-component works!</p>
-
-{{search.instrumento()}}
+@if(!resumen) {
+    <p>Busque un instrumento</p>
+}
+@else {
+    <div>
+        <h3>Detalles</h3>
+        <app-tabla-resumen [resumen]="resumen"></app-tabla-resumen>
+    </div>
+}

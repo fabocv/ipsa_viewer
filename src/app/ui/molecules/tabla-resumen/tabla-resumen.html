@@ -1,0 +1,6 @@
+@for (tab of tablas; track tab.header.columna){
+    <app-item-list [columna]="tab.header.columna" [valor]="tab.header.valor" class="border-b-2 border-b-gray"></app-item-list>
+    @for (fila of tab.lista; track fila.columna){
+        <app-item-list [columna]="fila.columna" [valor]="fila.valor"></app-item-list>
+    }
+}
