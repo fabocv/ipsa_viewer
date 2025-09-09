@@ -1,0 +1,7 @@
+@if(precios) {
+    <div class="py-2 my-2 inline-flex gap-2 items-center border-t-2 border-b-2 border-t-slate-700 border-b-slate-700">
+        <app-indice [tend]="precios.tend" [titulo]="titles[0]" [valor]="precios.lastPrice"></app-indice>
+        <app-indice [titulo]="titles[1]" [porcentual]="titles[1].includes('%')" [valor]="precios.performanceRelative"></app-indice>
+        <app-indice [titulo]="titles[2]" [porcentual]="titles[2].includes('%')" [valor]="precios.performanceAbsolute"></app-indice>
+    </div>
+}

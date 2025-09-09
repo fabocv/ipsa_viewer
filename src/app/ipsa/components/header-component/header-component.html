@@ -1,1 +1,13 @@
-<p>header-component works!</p>
+@if (resumen == null) {
+    <div>
+        Esperando Datos
+    </div>
+}@else {
+    <div>
+        <h1>{{resumen.info.codeInstrument}}</h1>
+        <h3>{{resumen.info.countryName}}</h3>
+        <div #indices class="inline-flex gap-2">
+            <app-indices-header [precios]="resumen.price"></app-indices-header>
+        </div>
+    </div>
+}
