@@ -55,20 +55,48 @@ export interface Resumen {
   data: DataResumen
 }
 
+export interface DataChartInstrumento {
+  info: InfoResumen,
+  chart: Dataset[]
+}
+
+export interface historyInstrumento {
+  success: boolean;
+  code: number;
+  data: DataChartInstrumento
+}
+
+export interface Dataset {
+  datetimeLastPrice: string;
+  datetimeLastPriceTs:number;
+  lastPrice: number;
+  highPrice:number;
+  lowPrice:number;
+  openPrice:number;
+  closePrice:number;
+  volume:number;
+  volumeMoney:number;
+  performanceRelative:number;
+  performanceAbsolute:number;
+  tend: string;
+}  
+
+
 @Injectable({ providedIn: 'root' })
 export class SearchService {
   private http = inject(HttpClient);
   
   instrumento = signal('');
   resumen = signal<DataResumen | null>(null);
+  dataset = signal<Dataset[] | null>(null);
   codeInstruments = codeInstrumentList;
 
   constructor() {
-    // 👇 se ejecuta cada vez que cambia `instrumento`
     effect(() => {
       const code = this.instrumento();
       if (code) {
         this.loadResumen(code);
+        this.loadDataset(code);
       }
     });
   }
@@ -77,6 +105,13 @@ export class SearchService {
     this.http.get<Resumen>(`/resumen/${instrumento}.json`)
       .subscribe((res: Resumen) => this.resumen.set(res.data));
     return this.resumen
+  }
+
+  loadDataset(instrumento: string) {
+    this.http.get<historyInstrumento>(`/history/history-${instrumento}.json`)
+      .subscribe((res: historyInstrumento) => {
+        this.dataset.set(res.data.chart);
+      })
   }
 }
 
