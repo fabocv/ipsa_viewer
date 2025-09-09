@@ -1,0 +1,19 @@
+.left-element {
+  float: left;
+  max-width: 3em;
+  margin-right: 8em;
+  font-size: 0.7em; font-weight: bold;
+}
+
+.right-element {
+  float: right;
+  text-align: end;
+  width: 9em;
+  font-size: 0.7em; font-weight: bold;
+}
+
+.container::after {
+  content: "";
+  display: table;
+  clear: both;
+}

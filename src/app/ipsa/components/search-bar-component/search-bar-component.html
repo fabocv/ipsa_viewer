@@ -1,3 +1,5 @@
 <app-searcher 
     [(value)]="query"
-    (valueChange)="search.instrumento.set($event)"/>
+    [items]="search.codeInstruments"
+    (valueChange)="buscar()"
+    />
