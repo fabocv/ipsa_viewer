@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-summary-component',
@@ -8,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class SummaryComponent {
 
+  constructor(public search: SearchService) {}
 }
