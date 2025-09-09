@@ -1,7 +1,6 @@
-import { Component, signal, input } from '@angular/core';
-import { InputTextModule } from 'primeng/inputtext';
-import { InputGroupModule } from 'primeng/inputgroup';
-import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { Component, signal } from '@angular/core';
+import { Searcher } from "../../../ui/molecules/searcher/searcher";
+import { SearchService } from '../../services/search.service';
 
 /*** 
  * SearchBarComponent: Barra de búsqueda de instrumentos.
@@ -10,14 +9,12 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 
 @Component({
   selector: 'app-search-bar-component',
-  imports: [InputTextModule,InputGroupModule,InputGroupAddonModule],
+  imports: [Searcher],
   templateUrl: './search-bar-component.html',
   styleUrl: './search-bar-component.css'
 })
 export class SearchBarComponent {
   query = signal<string>("");
 
-  doSomething(){
-    alert("hola!")
-  }
+  constructor(public search: SearchService) {}
 }
