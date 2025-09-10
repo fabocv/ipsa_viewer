@@ -36,9 +36,9 @@ export class ChartComponent {
           label: 'Last Prices',
           data: this.lastPrice,
           fill: true,
-          borderColor: '#42A5F5',
-          tension: 0.7,
-          backgroundColor: 'rgba(31, 194, 145, 0.2)'
+          borderColor: '#1df04eff',
+          tension: 0.1,
+          backgroundColor: 'rgba(37, 215, 162, 0.44)'
         },
       ]
     };

@@ -1,17 +1,22 @@
 <div class="mx-[2em]">
-    <app-search-bar-component></app-search-bar-component>
-    <div class="w-full inline-flex border-2 border-gray-700 p-[1em] my-2">
-        <div class="w-full">
-            <app-header-component></app-header-component>
-            <app-chart-component></app-chart-component>
-        </div>
-        <div class="w-1/4 p-4 border-2 border-gray-600">
-            <app-summary-component></app-summary-component>
+  <app-search-bar-component></app-search-bar-component>
+
+  <div class="w-full flex flex-col border-2 border-gray-700 p-[1em] my-2">
+    <app-header-component class="w-full"></app-header-component>
+
+    <div class="w-full flex flex-col sm:flex-row gap-4 items-start">
+      <div class="w-full sm:w-[66%] md:w-[70%] lg:w-[75%]">
+        <app-chart-component class="w-full block min-h-[280px] md:min-h-[360px]"></app-chart-component>
+      </div>
+
+      <div class="w-full sm:w-[34%] md:w-[30%] lg:w-[25%] ml-auto">
+        <app-summary-component class="w-full md:sticky md:top-6"></app-summary-component>
         </div>
     </div>
+  </div>
 
-    <section class="w-full border-2 border-gray-600 px-4 pb-4">
-        <app-tab-component></app-tab-component>
-        <app-instrument-list-component></app-instrument-list-component>
-    </section>
+  <section class="w-full border-2 border-gray-600 px-4 pb-4 mt-2">
+    <app-tab-component></app-tab-component>
+    <app-instrument-list-component></app-instrument-list-component>
+  </section>
 </div>

@@ -17,3 +17,7 @@
   display: table;
   clear: both;
 }
+
+.container {
+  padding: 0em;
+}
