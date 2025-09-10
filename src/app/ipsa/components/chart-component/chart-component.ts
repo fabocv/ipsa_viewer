@@ -14,24 +14,22 @@ export class ChartComponent implements OnInit {
   items: MenuItem[] | undefined;
   basicOptions: any;
   basicData: any;
-  dataset: Dataset[] | null= [];
   search = inject(SearchService);
   datetimeLastPrice: string[] = [];
   tiempo: string[] = [];
   lastPrice: number[] = [];
   periodo: number = -1;
 
-  constructor(){
-    effect(() => {
-    this.dataset = this.search.dataset();
+  dataset(): Dataset[] | null {
+    const dataset = this.search.dataset();
     this.periodo = -1;
 
-    if (!this.dataset) return;
+    if (!this.dataset) return null;
 
     this.datetimeLastPrice = [];
     this.tiempo = []
     this.lastPrice = [];
-    this.dataset.map(
+    dataset?.map(
       (item:Dataset) => {
         this.datetimeLastPrice.push(item.datetimeLastPrice);
         this.lastPrice.push(item.lastPrice);
@@ -70,7 +68,7 @@ export class ChartComponent implements OnInit {
     };
 
     this.prepararData();
-    });
+    return dataset
   }
 
   prepararData() {

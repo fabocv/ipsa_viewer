@@ -10,13 +10,13 @@ import { IndicesHeader } from "../../../ui/molecules/indices-header/indices-head
 })
 export class HeaderComponent {
   search = inject(SearchService);
-  resumen!: DataResumen | null
 
   constructor() {
-    effect(() => {
-      this.search.instrumento(); //prevenir desfaces entre componentes
-      this.resumen = this.search.resumen();
-      this.search.dataset(); //prevenir desfaces entre componentes
-    });
+    // evito escuchar en tiempo real para prevenir  ExpressionChangedAfterItHasBeenCheckedError
+    // effect(() => { this.resumen = this.search.resumen(); });
+  }
+
+  get resumen(): DataResumen | null {
+    return this.search.resumen();
   }
 }

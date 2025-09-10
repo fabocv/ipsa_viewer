@@ -16,11 +16,19 @@ import { SearchService } from '../../services/search.service';
 export class SearchBarComponent {
   query = signal<string>("");
 
-  buscar() {
+  _buscar() {
     const input = this.query().toUpperCase()
     this.search.instrumento.set("")
     if (this.search.codeInstruments.includes(input)) {
       this.search.instrumento.set(input)
+    }
+  }
+
+  buscar() {
+    const input = (this.query() || '').toUpperCase();
+    this.search.instrumento.set("");
+    if (this.search.codeInstruments.includes(input)) {
+      this.search.instrumento.set(input);
     }
   }
 

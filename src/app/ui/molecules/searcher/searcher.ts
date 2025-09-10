@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, Signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output, Signal, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
@@ -26,20 +26,37 @@ export class Searcher {
   }
 
   blur() {
-    const check = this.items.filter(item =>
-      item.toUpperCase().includes(this.value.toUpperCase())
-    ).length == 1;
-    if (!check){
-      this.valueChange.emit("")
+    const current = (this.value || '').toUpperCase();
+    const matches = this.items.filter(item =>
+      item.toUpperCase().includes(current)
+    );
+    if (matches.length !== 1) {
+      this.valueChange.emit('');
+    } else {
+      // 1 match siempre en mayúsculas
+      this.valueChange.emit(matches[0]);
     }
   }
 
   search(event: AutoCompleteCompleteEvent) {
-    const input = event.query
+    const input = event.query || '';
     this.filteredItems = this.items.filter(item =>
       item.toUpperCase().includes(input.toUpperCase())
     );
+    // emitir el texto tecleado (no seleccion)
+    this.valueChange.emit(input);
+  }
 
-    this.valueChange.emit(input)
+  onInput(query: string) {
+    this.valueChange.emit(query);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['items'] || changes['value']) {
+      const input = (this.value || '').toUpperCase();
+      this.filteredItems = this.items.filter(item =>
+        item.toUpperCase().includes(input)
+      );
+    }
   }
 }

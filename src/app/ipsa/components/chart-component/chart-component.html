@@ -1,4 +1,4 @@
-@if(basicData){
+@if(dataset() && basicData){
     <p-chart type="line" [data]="basicData" [options]="basicOptions"></p-chart>
     @if (periodo>-1) {
         <p>Periodo de {{periodo}} días </p>

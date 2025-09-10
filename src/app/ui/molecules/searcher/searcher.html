@@ -2,13 +2,15 @@
   <p-inputgroup-addon class="hover:bg-blue">
     <i class="pi pi-search"></i>
   </p-inputgroup-addon>
-  <p-autocomplete [(ngModel)]="value"
-    placeholder="Busca un instrumento"
-    dropdown="true"
-    (onBlur)="blur()"
-    (onSelect)="valueChange.emit($event.value)"
+  <p-autocomplete 
+    [(ngModel)]="value"
+    (ngModelChange)="onInput($event)"
     [suggestions]="filteredItems"
     (completeMethod)="search($event)"
+    (onSelect)="valueChange.emit($event.value)"
+    (onBlur)="blur()"
+    placeholder="Busca un instrumento"
+    dropdown="true"
     />
 
 </p-inputgroup>
