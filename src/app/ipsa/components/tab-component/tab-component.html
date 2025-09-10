@@ -8,7 +8,7 @@
         @for (tab of tabs; track tab.value) {
             <p-tabpanel [value]="tab.value">
                 @if(dataIndices()) {
-                    indice ok
+                    <app-instrument-list-component [indice]="this.constituyentes"></app-instrument-list-component>
                 }@else {
                     Sin datos
                 }

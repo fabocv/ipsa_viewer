@@ -1,1 +1,13 @@
-<p>instrument-list-component works!</p>
+@if(indice){
+    @for (item of indice.slice(first, first+rows); track item.name) {
+        <app-instrument-item-component [data] = "item"></app-instrument-item-component>
+    }
+    <div class="card flex justify-center" style="background-color: #111111;">
+        <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="indice.length" [rowsPerPageOptions]="[10, 20, 30]"
+            [showCurrentPageReport]="true"
+            [showPageLinks]="false"
+            [showJumpToPageDropdown]="false"
+            currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords}" />
+
+    </div>
+}

@@ -8,7 +8,7 @@ export interface InfoIndice {
     codeInstrument: string
 }
 
-export interface ConstituentsList {
+export interface Constituent {
     codeInstrument: string
     name: string
     shortName: string
@@ -28,7 +28,7 @@ export interface ConstituentsList {
 
 export interface DataIndices {
     info: InfoIndice
-    constituents: ConstituentsList
+    constituents: Constituent[]
 }
 
 export interface DataBolsa {
@@ -37,17 +37,26 @@ export interface DataBolsa {
     data: DataIndices
 }
 
+const dataindices_void: DataIndices = {
+    info:{
+        name: "string",
+        shortName: "string",
+        countryName: "string",
+        codeInstrument: "string",
+    }, constituents: []
+}
+
 @Injectable({ providedIn: 'root' })
 export class IndicesService {
     private http = inject(HttpClient);
     
-    indices = signal<DataIndices | null>(null);
+    indices = signal<DataIndices >(dataindices_void);
     tab = signal(0)
 
     loadIndices(indice: string) {
         this.http.get<DataBolsa>(`/constituyentes/constituensList.json`)
             .subscribe((res: DataBolsa) =>  this.indices.set(
-                res?.data?.info?.name == indice ? res.data : null));
+                res?.data?.info?.name == indice ? res.data : dataindices_void));
         return this.indices()
     }
 }
