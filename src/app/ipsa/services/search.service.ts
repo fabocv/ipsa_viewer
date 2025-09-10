@@ -87,6 +87,7 @@ export class SearchService {
   private http = inject(HttpClient);
   
   instrumento = signal('');
+  periodo = signal(-1); //-1: todos los periodos del dataset a graficar
   resumen = signal<DataResumen | null>(null);
   dataset = signal<Dataset[] | null>(null);
   codeInstruments = codeInstrumentList;
