@@ -1,6 +1,19 @@
-@for (tab of tablas; track tab.header.columna){
-    <app-item-list [columna]="tab.header.columna" [valor]="tab.header.valor" class="border-b-2 border-b-gray"></app-item-list>
-    @for (fila of tab.lista; track fila.columna){
-        <app-item-list [columna]="fila.columna" [valor]="fila.valor"></app-item-list>
+<div class="max-w-fit">
+    @for (tab of tablas; track tab.header.columna){
+        <app-item-list 
+            class="mb-2"
+            [porcentual]="false"
+            [columna]="tab.header.columna"
+            [valorStr]="tab.header.valorStr + ''">
+        </app-item-list>
+        <hr>
+        @for (fila of tab.lista; track fila.columna){
+            <app-item-list
+                [porcentual]="tab.porcentual"
+                [columna]="fila.columna"
+                [valor]="fila.valor"
+                [valorStr]="fila.valorStr">
+            </app-item-list>
+        }
     }
-}
+</div>

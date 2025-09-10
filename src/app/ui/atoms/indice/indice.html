@@ -1,22 +1,10 @@
 <div class="inline-flex gap-1 items-center" style="font-size: 1em;">
-    <p>{{titulo}}</p>
+    <p class="pr-2">{{titulo}}</p>
     @if(tend){
         @if(tend == "down"){ <i class="pi pi-arrow-down" style="font-size: 0.8em"></i>}
         @else { <i class="pi pi-arrow-up" style="font-size: 1rem"></i>}
     }
 
-    <div class="inline-flex">
-        @if(valor < 0){ 
-            <p class="inline-flex" style="color:red">{{valor.toString()| number:'1.2-2'}}
-                @if(porcentual) { <div style="color:red">%</div>}
-            </p>
-        }
-        @else { 
-            <p class="inline-flex">{{valor.toString()| number:'1.2-2'}}
-                @if(porcentual) { <div>%</div>}
-            </p>
-        }
-        
-    </div>
+    <app-valor [valor]="valor" [porcentual]="porcentual"></app-valor>
     
 </div>

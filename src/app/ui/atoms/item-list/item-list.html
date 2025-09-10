@@ -1,4 +1,11 @@
 <div class="container">
     <p class="left-element">{{columna}}</p>
-    <p class="right-element" style="font-size: 0.7em; font-weight: bold; text-align: right;">{{valor?.toString()}} </p>
+    @if(valorStr){
+        <p class="right-element">{{valorStr}}</p>
+    }@else if(valor) {
+        <app-valor [valor]="valor" class="right-element" [porcentual]="porcentual"></app-valor>
+    }@else {
+        <p class="right-element">-</p>
+    }
+
 </div>

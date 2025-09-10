@@ -1,9 +1,10 @@
-import { DecimalPipe } from '@angular/common';
+
 import { Component, Input } from '@angular/core';
+import { Valor } from "../valor/valor";
 
 @Component({
   selector: 'app-indice',
-  imports: [DecimalPipe],
+  imports: [Valor],
   templateUrl: './indice.html',
   styleUrl: './indice.css'
 })

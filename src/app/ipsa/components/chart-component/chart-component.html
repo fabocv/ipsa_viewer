@@ -1,1 +1,9 @@
-<p-chart type="line" [data]="basicData" [options]="basicOptions"></p-chart> 
+@if(basicData){
+    <p-chart type="line" [data]="basicData" [options]="basicOptions"></p-chart>
+    @if (periodo>-1) {
+        <p>Periodo de {{periodo}} días </p>
+    }@else {
+        <p>Estás viendo todos los periodos</p>
+    }
+    <p-menubar [model]="items" autoHide="false"/>
+}

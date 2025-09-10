@@ -1,0 +1,13 @@
+<div class="inline-flex">
+    @if(valor && valor < 0){ 
+        <p class="inline-flex" style="color:red">{{valor.toString()| number:'1.2-2'}}
+            @if(porcentual == true) { <div style="color:red">%</div>}
+        </p>
+    }
+    @else { 
+        <p class="inline-flex" style="color:green">+{{valor?.toString()| number:'1.2-2'}}
+            @if(porcentual == true) { <div>%</div>}
+        </p>
+    }
+    
+</div>

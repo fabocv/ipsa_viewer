@@ -56,8 +56,8 @@ main {
 }
 
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .container {
     grid-template-columns: 1fr;
     }
-}
+} */

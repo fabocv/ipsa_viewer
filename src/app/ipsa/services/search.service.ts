@@ -1,7 +1,7 @@
 import { effect, inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-const codeInstrumentList = ["IPSA","AGUAS-A", "ANDINA-B", "BCI", "BSANTANDER", "CAP"]
+const codeInstrumentList = ["AGUAS-A", "ANDINA-B", "BCI", "BSANTANDER", "CAP","IPSA"]
 export interface InfoResumen {
   name: string
   shortName: string
