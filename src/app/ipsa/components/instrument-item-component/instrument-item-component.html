@@ -1,11 +1,13 @@
-<p-button #fila class="inline-flex gap-2 hover:bg-slate-800 px-4 pb-2 cursor-pointer" 
-    variant="outlined" severity="success"
-    (onClick)="actualizarInstrumento(data.codeInstrument)">
-    <div class="w-[12em]"> {{data.name}} </div>
-    <div class="w-[9em] text-right"> {{data.lastPrice | number:'1.2-2'}} </div>
-    <div class="w-[9em] text-right"> {{data.accumulatedVolumeMoney/1000000 | number:'1.2-2'}} </div>
-    <div class="w-[9em] text-right"> <app-valor [valor]="data.pctDay" [porcentual]="true"></app-valor> </div>
-    <div class="w-[9em] text-right"> <app-valor [valor]="data.pct30D" [porcentual]="true"></app-valor>  </div>
-    <div class="w-[9em] text-right"> <app-valor [valor]="data.pctCY" [porcentual]="true"></app-valor> </div>
-    <div class="w-[9em] text-right"> <app-valor [valor]="data.pct1Y" [porcentual]="true"></app-valor>  </div>
-</p-button>
+@if(data) {
+    <p-button #fila class="inline-flex gap-2 hover:bg-slate-800 px-4 pb-2 cursor-pointer" 
+        variant="outlined" severity="success"
+        (onClick)="actualizarInstrumento(data.codeInstrument)">
+        <div class="w-[12em]"> {{data.name}} </div>
+        <div class="w-[9em] text-right"> {{data.lastPrice | number:'1.2-2'}} </div>
+        <div class="w-[9em] text-right"> {{data.accumulatedVolumeMoney/1000000 | number:'1.2-2'}} </div>
+        <div class="w-[9em] text-right"> <app-valor [valor]="data.pctDay" [porcentual]="true"></app-valor> </div>
+        <div class="w-[9em] text-right"> <app-valor [valor]="data.pct30D" [porcentual]="true"></app-valor>  </div>
+        <div class="w-[9em] text-right"> <app-valor [valor]="data.pctCY" [porcentual]="true"></app-valor> </div>
+        <div class="w-[9em] text-right"> <app-valor [valor]="data.pct1Y" [porcentual]="true"></app-valor>  </div>
+    </p-button>
+}

@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing'
 import { InstrumentItemComponent } from './instrument-item-component';
 
 describe('InstrumentItemComponent', () => {
@@ -8,7 +9,11 @@ describe('InstrumentItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InstrumentItemComponent]
+      imports: [InstrumentItemComponent],
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting()
+      ]
     })
     .compileComponents();
 
