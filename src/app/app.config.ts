@@ -18,7 +18,7 @@ export const appConfig: ApplicationConfig = {
         }),
         
     provideBrowserGlobalErrorListeners(),
-    provideZonelessChangeDetection(),
+    //provideZonelessChangeDetection(),
     provideRouter(routes), provideClientHydration(withEventReplay())
   ]
 };
