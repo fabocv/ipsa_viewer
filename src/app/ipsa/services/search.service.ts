@@ -97,17 +97,14 @@ export class SearchService {
       const code = this.instrumento();
       if (code) {
         this.loadResumen(code);
-        if (this.resumen()) this.loadDataset(code);
+        this.loadDataset(code);
       }
     });
   }
 
   loadResumen(instrumento: string) {
     this.http.get<Resumen>(`/resumen/${instrumento}.json`)
-      .subscribe({
-        next: (res: Resumen) => this.resumen.set(res.data),
-        error: (err: any) => {alert("Sin datos"); this.resumen.set(null)}
-      });
+      .subscribe((res: Resumen) => this.resumen.set(res.data));
     return this.resumen
   }
 
