@@ -91,6 +91,7 @@ export class ChartComponent implements OnInit {
 
   graficarPeriodo(codigo: string) {
     const periodo: number = codigo != "ALL" ? codigo.includes("M") ? 30*Number(codigo[0]) : 360 : -1;
+    this.periodo = periodo;
     this.search.periodo.set(periodo);
   }
 

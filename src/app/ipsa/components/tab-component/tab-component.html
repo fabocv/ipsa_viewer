@@ -1,1 +1,19 @@
-<p>tab-component works!</p>
+<p-tabs (valueChange)="changeTab($event)" value="0">
+    <p-tablist>
+        @for (tab of tabs; track tab.value) {
+            <p-tab [value]="tab.value">{{ tab.title }}</p-tab>
+        }
+    </p-tablist>
+    <p-tabpanels>
+        @for (tab of tabs; track tab.value) {
+            <p-tabpanel [value]="tab.value">
+                @if(dataIndices()) {
+                    <app-instrument-list-component [indice]="this.constituyentes"></app-instrument-list-component>
+                }@else {
+                    Sin datos
+                }
+                
+            </p-tabpanel>
+        }
+    </p-tabpanels>
+</p-tabs>

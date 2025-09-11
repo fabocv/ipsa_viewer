@@ -1,1 +1,36 @@
-<p>instrument-list-component works!</p>
+@if(indice){
+    <div #fila class="inline-flex gap-2 hover:bg-slate-800 px-4 pb-2">
+        <div class="w-[12em]"  > Nombre <p-button (onClick)="sortNombre()"> 
+        @if (nombreAsc){
+            <i class="pi pi-sort-alpha-down" ></i>
+        }@else {
+            <i class="pi pi-sort-alpha-down-alt"></i>
+        }
+        </p-button></div>
+        <div class="w-[9em] text-right"> Último  <p-button (onClick)="sortUltimo()"> 
+        @if (ultimoAsc){
+            <i class="pi pi-sort-amount-down" ></i>
+        }@else {
+            <i class="pi pi-sort-amount-up"></i>
+        }
+        </p-button></div>
+        <div class="w-[9em] text-right"> Monto(MM) </div>
+        <div class="w-[9em] text-right"> Var día</div>
+        <div class="w-[9em] text-right">  Var 30d** </div>
+        <div class="w-[9em] text-right"> Año Actual </div>
+        <div class="w-[9em] text-right">  12 Meses</div>
+    </div>
+    @for (item of data().slice(first, first+rows); track item.name) {
+        <app-instrument-item-component [data] = "item"></app-instrument-item-component>
+    }
+    <div class="card flex justify-center" style="background-color: #111111;">
+        <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" 
+            [totalRecords]="indice.length"
+            [rowsPerPageOptions]="[10, 20, 30]"
+            [showCurrentPageReport]="true"
+            [showPageLinks]="false"
+            [showJumpToPageDropdown]="false"
+            currentPageReportTemplate="Mostrando {first} de {last} constituyentes de un total de {totalRecords}" />
+
+    </div>
+}
